@@ -1,5 +1,5 @@
 /* eslint-disable no-underscore-dangle */
-import { merge } from 'lodash';
+import merge from 'lodash.merge';
 import { Extraction } from '@lcdev/mapper';
 import 'reflect-metadata';
 

@@ -38,7 +38,7 @@
     "@lcdev/prettier": "0.1",
     "@lcdev/tsconfig": "0.1",
     "@types/jest": "24",
-    "@types/lodash": "4",
+    "@types/lodash.merge": "4",
     "eslint": "6",
     "husky": "3",
     "jest": "24",
@@ -47,7 +47,7 @@
   },
   "dependencies": {
     "@lcdev/mapper": "0.1",
-    "lodash": "4",
+    "lodash.merge": "4",
     "reflect-metadata": "0.1"
   },
   "prettier": "@lcdev/prettier",
