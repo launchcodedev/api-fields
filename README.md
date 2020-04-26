@@ -1,4 +1,9 @@
 # API Fields
+[![Licensed under MPL 2.0](https://img.shields.io/badge/license-MPL_2.0-green.svg)](https://www.mozilla.org/en-US/MPL/2.0/)
+[![Build Status](https://github.com/servall/api-fields/workflows/CI/badge.svg)](https://github.com/servall/api-fields/actions)
+[![npm](https://img.shields.io/npm/v/@lcdev/api-fields.svg)](https://www.npmjs.com/package/@lcdev/api-fields)
+[![BundlePhobia](https://badgen.net/bundlephobia/minzip/@lcdev/api-fields)](https://bundlephobia.com/result?p=@lcdev/api-fields@latest)
+
 A small utility package that enables an easy way to guarantee that your API doesn't return fields
 that you didn't want it to.
 
