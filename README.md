@@ -26,10 +26,13 @@ class User extends BaseEntity {
 
   // we never want to give this back in API responses
   // maybe it's private, or maybe we don't want consumers to depend on it
-  privateField: number;
-
-  @ApiField()
   firstName: string;
+  lastName: string;
+
+  @ApiField() // works just fine on getters
+  get fullName() {
+    return `${this.firstName} ${this.lastName}`;
+  }
 
   // here, we only want the API Fields of Permission in the nested field
   @ApiField(() => Permission)
@@ -39,7 +42,12 @@ class User extends BaseEntity {
 }
 ```
 
-To reveal the 'Extraction' object that can be used by `@lcdev/mapper`:
+Under the hood, this creates a listing of the fields you want to expose. We
+call them "API Fields" because this is usually the way you expose fields in
+JSON API responses.
+
+We can get that metadata about any given class with the `getAPIFields` function.
+The object returned can actually be used directly in `@lcdev/mapper`.
 
 ```typescript
 import { getApiFields } from '@lcdev/api-fields';
@@ -52,14 +60,40 @@ const extraction = getApiFields(User);
 const trimmedFields = extract(fullFields, extraction);
 ```
 
-Decorator possibilities:
-- `@ApiField() property` means take all of `property`
-- `@ApiField(() => PropertyType) property` means take ApiFields of `property`
-- `@ApiField(() => [PropertyType]) property[]` means take ApiFields of all `property`s
-- `@ApiField({ ... }) property` means take `{ ... }` from `property`
+### Formats
+- `@ApiField() propName`: extract `propName` as-is
+- `@ApiField(() => PropertyType) propName`: extract the ApiFields of `PropertyType` as `propName`
+- `@ApiField(() => [PropertyType]) propName[]`: map as array, extracting ApiFields of each element
+- `@ApiField({ ... }) propName`: extract fields from `propName` (same as `@lcdev/mapper`)
+- `@ApiField(false) propName`: don't include this field
 
-You might want to create middleware in your router to do this type of extraction for you.
-Internally at Launchcode we do just that, and would like to open-source that effort as well.
+### Renames
+Renaming a field is supported, in the same way it is in `@lcdev/mapper`.
+
+```typescript
+import { ApiField } from '@lcdev/api-fields';
+import { rename } from '@lcdev/mapper';
+
+class ImageUpload {
+  @ApiField(rename('url'))
+  awsURL: string;
+}
+```
+
+When being extracted, the field will be renamed.
+
+### Transforms
+Transforming a field is supported, in the same way it is in `@lcdev/mapper`.
+
+```typescript
+import { ApiField } from '@lcdev/api-fields';
+import { transform } from '@lcdev/mapper';
+
+class ImageUpload {
+  @ApiField(transform(v => v.replace('https:', '')))
+  awsURL: string;
+}
+```
 
 ### Alternatives
 - [class-transformer](https://github.com/typestack/class-transformer)
