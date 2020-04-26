@@ -1,6 +1,6 @@
 {
   "name": "@lcdev/api-fields",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "Trim fields from your models before returning in API",
   "license": "MPL-2.0",
   "sideEffects": false,
