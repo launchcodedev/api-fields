@@ -11,7 +11,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/servall/api-fields.git"
+    "url": "https://github.com/launchcodedev/api-fields.git"
   },
   "main": "dist/index.js",
   "module": "dist/es/index.js",

@@ -1,6 +1,6 @@
 # API Fields
 [![Licensed under MPL 2.0](https://img.shields.io/badge/license-MPL_2.0-green.svg)](https://www.mozilla.org/en-US/MPL/2.0/)
-[![Build Status](https://github.com/servall/api-fields/workflows/CI/badge.svg)](https://github.com/servall/api-fields/actions)
+[![Build Status](https://github.com/launchcodedev/api-fields/workflows/CI/badge.svg)](https://github.com/launchcodedev/api-fields/actions)
 [![npm](https://img.shields.io/npm/v/@lcdev/api-fields.svg)](https://www.npmjs.com/package/@lcdev/api-fields)
 [![BundlePhobia](https://badgen.net/bundlephobia/minzip/@lcdev/api-fields)](https://bundlephobia.com/result?p=@lcdev/api-fields@latest)
 
@@ -14,7 +14,7 @@ yarn add @lcdev/api-fields@0.1
 You might want to reduce the duplication when extracting return values. Most of the time,
 you want to return the same fields for the same entities, records, etc.
 
-API Fields is a decorator for classes that gives you the ability to tie in to [`@lcdev/mapper`](https://github.com/servall/mapper),
+API Fields is a decorator for classes that gives you the ability to tie in to [`@lcdev/mapper`](https://github.com/launchcodedev/mapper),
 specifically its `extract` function.
 
 ```typescript
